@@ -1,17 +1,38 @@
-## How to manage schema changes
+# create-svelte
 
-Prisma Migrate and Introspection workflows are currently not supported when working with Turso. This is because Turso uses HTTP to connect to your database, which Prisma Migrate doesn't support.
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
 
-To update your database schema:
+## Creating a project
 
-    Generate a migration file using prisma migrate dev against a local SQLite database:
+If you're seeing this, you've probably already done this step. Congrats!
 
-npx prisma migrate dev --name init
+```bash
+# create a new project in the current directory
+npm create svelte@latest
 
-Apply the migration using Turso's CLI:
+# create a new project in my-app
+npm create svelte@latest my-app
+```
 
-    turso db shell turso-prisma-db < ./prisma/migrations/20230922132717_init/migration.sql
+## Developing
 
-    Replace 20230922132717_init with the name of your migration.
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-For subsequent migrations, repeat the above steps to apply changes to your database. This workflow does not support track the history of applied migrations to your remote database.
+```bash
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+## Building
+
+To create a production version of your app:
+
+```bash
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

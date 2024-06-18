@@ -1,35 +1,25 @@
 const daisyui = require('daisyui');
 const typography = require('@tailwindcss/typography');
+const forms = require('@tailwindcss/forms');
 
-/** @type {import('tailwindcss').Config} */
-export default {
+const config = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ['Fira Sans', 'Arial', 'sans-serif'],
-				serif: ['Fira Sans', 'Arial', 'sans-serif'],
-				mono: ['Fira Sans', 'Arial', 'sans-serif'],
-			},
-		},
+				sans: ['var(--font-family)', 'Arial', 'sans-serif'],
+				serif: ['var(--font-family)', 'Arial', 'sans-serif'],
+				mono: ['var(--font-family)', 'Arial', 'sans-serif']
+			}
+		}
 	},
 
-	plugins: [typography, daisyui],
+	plugins: [forms, typography, daisyui],
 	daisyui: {
 		logs: false,
-		themes: [
-			{
-				pastel: {
-					...require('daisyui/src/theming/themes')['[data-theme=pastel]'],
-					primary: '#2779a7',
-					accent: '#27296d',
-					secondary: '#ff7050',
-					success: '#428c5f',
-					error: '#e32d2d',
-					neutral: '#818181',
-				},
-			},
-		],
-	},
+		themes: []
+	}
 };
+
+module.exports = config;
